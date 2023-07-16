@@ -59,3 +59,5 @@ Note Metamask should correctly recognize the dummy wallet connected to the testi
 After this, the project will be running on your localhost. Typically at
 
 ## For better understanding, Loom Link is present here!
+https://www.loom.com/share/711bad45f5d940d9ac3b228c7ee6cff2
+

@@ -46,4 +46,16 @@ npm start
 ```
 Note Metamask should correctly recognize the dummy wallet connected to the testing address.  Open developer console to observe the result and greeting message.
 
+## Setup Procedure
+1) Clone repository files from github to vs code
+2) open multiple terminals
+3) type, "npm i" in first terminal
+4) type, "npx hardhat clean" in second terminal; because if prrevious files have generated them it will not compile our hardhat
+5) type, "npx hardhat compile", in third terminal
+6) type, "npx hardhat run --network localhost scripts/deploy.js" in first terminal
+7) after deployment, our project is ready to run; so type, "npm start" in second terminal
+8) finally, it is connected to local host named as  http://localhost:3000/
+
+After this, the project will be running on your localhost. Typically at
+
 ## For better understanding, Loom Link is present here!

@@ -1,6 +1,11 @@
-# Basic Sample Hardhat Project
-
+# Metacrafter 
+# ETH+AVAX Module 2
+## Short Summary of Project
+This Project deals with hardhat environment. This environment connects Froentend to metamask.
+We have connected metamask account to our frontend and performed some functions which upadte phone number and do transaction from our account and finally fetches the data.
+In general,
 This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+## Basic commands used in terminal
 
 Try running some of the following tasks:
 
@@ -40,3 +45,5 @@ Follow Metamask's instructions and show all network.  Choose local network, e.g.
 npm start
 ```
 Note Metamask should correctly recognize the dummy wallet connected to the testing address.  Open developer console to observe the result and greeting message.
+
+## For better understanding, Loom Link is present here!

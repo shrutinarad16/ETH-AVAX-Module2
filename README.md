@@ -262,6 +262,132 @@ Two buttons are rendered: "Fetch Phone Number" and "Update Phone Number". Clicki
 An <input> element is rendered for entering the phone number. Its onChange event updates the phoneNumber state with the entered value.
 The current phoneNumber state value is displayed inside a <div> element.*/
 
+### PhoneNumber.sol
+// SPDX-License-Identifier: Unlicense
+pragma solidity ^0.8.0;
+
+import "hardhat/console.sol";
+
+contract PhoneNumber {
+    string private phoneNumber;
+
+    constructor(string memory _phoneNumber) {
+        console.log("Deploying PhoneNumber with number:", _phoneNumber);
+        phoneNumber = _phoneNumber;
+    }
+
+    function getPhoneNumber() public view returns (string memory) {
+        return phoneNumber;
+    }
+
+    function setPhoneNumber(string memory _phoneNumber) public {
+        console.log("Changing phone number from '%s' to '%s'", phoneNumber, _phoneNumber);
+        phoneNumber = _phoneNumber;
+}
+
+}
+
+## Line to line explanation of above code
+### Code
+import "hardhat/console.sol";
+contract PhoneNumber {
+    string private phoneNumber;
+/* The contract imports the console.sol library from the Hardhat development environment. This library provides a set of console output functions that can be used for debugging and logging purposes. The contract PhoneNumber is defined. It contains a single state variable called phoneNumber, which is of type string. The variable is marked as private, meaning it can only be accessed from within the contract itself./*
+
+### Code
+    constructor(string memory _phoneNumber) {
+        console.log("Deploying PhoneNumber with number:", _phoneNumber);
+        phoneNumber = _phoneNumber;
+    }
+/* The constructor function is defined. It is executed once during the contract deployment.
+The constructor takes a string parameter _phoneNumber, which represents the initial phone number to be set.
+Inside the constructor, the phone number is logged using the console.log function from the imported console.sol library.
+The _phoneNumber value is assigned to the phoneNumber state variable. */
+
+### Code
+    function getPhoneNumber() public view returns (string memory) {
+        return phoneNumber;
+    }
+/* The getPhoneNumber function is defined. It is a public function that can be called by anyone.
+The function is marked as view, indicating that it only reads the contract state and does not modify it.
+It returns the value of the phoneNumber state variable.*/
+
+### Code
+    function setPhoneNumber(string memory _phoneNumber) public {
+        console.log("Changing phone number from '%s' to '%s'", phoneNumber, _phoneNumber);
+        phoneNumber = _phoneNumber;
+    }
+}
+
+/* The setPhoneNumber function is defined. It is a public function that allows the caller to update the phone number.
+It takes a string parameter _phoneNumber, representing the new phone number to be set.
+Inside the function, the current and new phone numbers are logged using the console.log function from the console.sol library.
+The _phoneNumber value is assigned to the phoneNumber state variable, effectively updating the phone number.*/
+
+### deploy.js
+const { ethers } = require("hardhat");
+
+async function main() {
+  const [deployer] = await ethers.getSigners();
+
+  console.log("Deploying contract with the account:", deployer.address);
+
+  const PhoneNumber = await ethers.getContractFactory("PhoneNumber");
+  const phoneNumber = await PhoneNumber.deploy("1234567890"); // Set the initial phone number here
+
+  console.log("PhoneNumber deployed to:", phoneNumber.address);
+}
+
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+
+  ## Line by line explaination of above code
+  ### Code
+  const { ethers } = require("hardhat");
+  
+/* The code starts by importing the ethers object from the hardhat package. ethers is a library that provides a set of tools and utilities for interacting with Ethereum.*/
+
+### Code
+async function main() {
+  const [deployer] = await ethers.getSigners();
+
+/* The code defines an asynchronous function named main(). This function is the entry point of the script.
+Inside the function, it uses ethers.getSigners() to retrieve an array of signers (Ethereum accounts) available in the current environment. In this case, it expects to get the deployer's signer account, and it uses array destructuring to assign it to the deployer variable.*/
+
+### Code
+  console.log("Deploying contract with the account:", deployer.address);
+
+/* It logs a message to the console, indicating that a contract deployment is about to occur, and it displays the address of the deployer's account.*/
+
+### Code
+  const PhoneNumber = await ethers.getContractFactory("PhoneNumber");
+  const phoneNumber = await PhoneNumber.deploy("1234567890"); // Set the initial phone number here
+
+/* It uses ethers.getContractFactory() to retrieve a contract factory object for the "PhoneNumber" contract.
+It then uses the deploy() method on the contract factory to deploy a new instance of the "PhoneNumber" contract to the Ethereum network.
+The deploy() method takes the initial phone number ("1234567890") as an argument. You can change this value to set a different initial phone number for the deployed contract.
+The resulting deployed contract instance is assigned to the phoneNumber variable.*/
+
+### Code
+  console.log("PhoneNumber deployed to:", phoneNumber.address);
+
+/* It logs a message to the console, indicating that the "PhoneNumber" contract has been deployed, and it displays the address of the deployed contract.*/
+
+### Code
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+
+/* The main() function is invoked to start the deployment process.
+.then(() => process.exit(0)) is called to exit the process with a status code of 0 if the deployment is successful.
+.catch((error) => {...}) is used to catch any errors that occur during deployment. If an error occurs, it is logged to the console, and the process is exited with a non-zero status code (1) to indicate an error.*/
 
 
 
